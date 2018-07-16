@@ -17,7 +17,7 @@ class AmazonTransaction
   
   def add_item(item, price, quantity=1)
     #info_array = [price, quantity]
-    @items += item
+    @items << item
     @total += (price * quantity)
   end
   
