@@ -31,8 +31,8 @@ describe 'AmazonTransaction' do
       expect(amazon_transaction.total).to eq(0.98)
     end
 
-    it 'adds the purchased item to the @items array' do
-      amazon_transaction.add_item("eggs", 0.98)
+     it 'adds the purchased item to the @items array' do
+       amazon_transaction.add_item("eggs", 0.98)
       expect(amazon_transaction.items).to include("eggs")
     end
 
@@ -60,7 +60,7 @@ describe 'AmazonTransaction' do
 
       it 'returns a success message with updated total' do
         amazon_transaction_with_discount.add_item("MacBook Air", 1000)
-        expect(amazon_transaction_with_discount.apply_discount).to eq("After the discount, the total comes to $800.")
+        expect(amazon_transaction_with_discount.apply_discount).to eq("After the discount, the total comes to $800.00")
       end
 
       it 'changes the total' do
@@ -87,13 +87,13 @@ describe 'AmazonTransaction' do
   end
 
 
-  # BONUS: uncomment out each test to work on this part
-  # describe '#cancel_order' do
-  #   it 'subtracts the last transaction from the total' do
-  #     amazon_transaction.add_item("tomato", 1.76)
-  #     expect{amazon_transaction.cancel_order}.to change{amazon_transaction.total}.by(-1.76)
-  #   end
-  # end
+  #BONUS: uncomment out each test to work on this part
+  describe '#cancel_order' do
+    it 'subtracts the last transaction from the total' do
+      amazon_transaction.add_item("tomato", 1.76)
+      expect{amazon_transaction.cancel_order}.to change{amazon_transaction.total}.by(-1.76)
+    end
+  end
 
   #Completing this test requires knowledge of class variables, class methods and self.
   # describe '.transaction_codes' do
